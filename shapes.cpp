@@ -10,6 +10,13 @@ Colour::Colour(int r, int g, int b) {
     this->b = b;
 }
 
+Colour operator* (Colour col, const double a) {
+    col.r = (col.r * a <= 255) ? (col.r * a) : 255;
+    col.g = (col.g * a <= 255) ? (col.g * a) : 255;
+    col.b = (col.b * a <= 255) ? (col.b * a) : 255;
+    return col;
+}
+
 Sphere::Sphere(Vec3m center, double r, Material material) {
     this->center = center;
     this->r = r;
@@ -26,4 +33,8 @@ bool Sphere::intersect(const Vec3m &orig, const Vec3m &dir, double &d) {
     if (d < 1) d = L_dir + d_in_sph; //переделать 1 на что-то более общее (расстояние до экрана)
     if (d < 1) return false;
     return true;
+}
+
+Vec3m Sphere::normal(const Vec3m &point) {
+    return (point - center).normilize();
 }

@@ -27,9 +27,24 @@ double& Vec3m::operator[](const int i) {
     if (i == 3) return z;
 }
 
+Vec3m operator+(Vec3m lhs, const Vec3m& rhs) {
+    for (int i = 1; i <= 3; i++) {
+        lhs[i] += rhs[i];
+    }
+    return lhs;
+}
+
 Vec3m operator-(Vec3m lhs, const Vec3m& rhs) {
     for (int i = 1; i <= 3; i++) {
         lhs[i] -= rhs[i];
+    }
+    return lhs;
+}
+
+Vec3m operator*(Vec3m lhs, const double a) {
+    double ret = 0;
+    for (int i = 1; i <= 3; i++) {
+        lhs[i] *= a;
     }
     return lhs;
 }

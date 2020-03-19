@@ -13,7 +13,9 @@ public:
     const double& operator[](const int i) const;
 };
 
-Vec3m operator-(Vec3m lhs, const Vec3m& rhs);
-double operator*(const Vec3m& lhs, const Vec3m& rhs);
 
+Vec3m operator+(Vec3m lhs, const Vec3m& rhs);
+Vec3m operator-(Vec3m lhs, const Vec3m& rhs);
+Vec3m operator*(Vec3m lhs, const double a);
+double operator*(const Vec3m& lhs, const Vec3m& rhs);
 #endif
