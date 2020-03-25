@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+#include <iostream>
+
 Vec3m::Vec3m(double x, double y, double z) {
     this->x = x;
     this->y = y;
@@ -13,6 +15,10 @@ Vec3m Vec3m::normilize() {
     if (norm != 0) { 
         return Vec3m(x/norm, y/norm, z/norm);
     } else return *this;
+}
+
+double Vec3m::norm() {
+    return std::sqrt(x*x + y*y + z*z);
 }
 
 const double& Vec3m::operator[](const int i) const{ 
@@ -55,4 +61,8 @@ double operator*(const Vec3m& lhs, const Vec3m& rhs) {
         ret += lhs[i] * rhs[i];
     }
     return ret;
+}
+
+Vec3m reflect(const Vec3m &I, const Vec3m &N) {
+    return I - N*2.f*(I*N);
 }

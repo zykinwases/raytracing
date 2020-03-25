@@ -17,6 +17,13 @@ Colour operator* (Colour col, const double a) {
     return col;
 }
 
+Colour operator+ (Colour col1, Colour col2) {
+    col1.r = (col1.r + col2.r <= 255) ? (col1.r + col2.r) : 255;
+    col1.g = (col1.g + col2.g <= 255) ? (col1.g + col2.g) : 255;
+    col1.b = (col1.b + col2.b <= 255) ? (col1.b + col2.b) : 255;
+    return col1;
+}
+
 Sphere::Sphere(Vec3m center, double r, Material material) {
     this->center = center;
     this->r = r;
@@ -37,4 +44,18 @@ bool Sphere::intersect(const Vec3m &orig, const Vec3m &dir, double &d) {
 
 Vec3m Sphere::normal(const Vec3m &point) {
     return (point - center).normilize();
+}
+
+bool Floor::intersect(const Vec3m &orig, const Vec3m &dir, double &d) {
+    if (((orig.y > y) && (dir.y < 0)) || ((orig.y < y) && (dir.y > 0))) {
+        double a = (y - orig.y) / dir.y;
+        d = (dir * a).norm();
+        material = (int(round(dir.x * a) + round(dir.z * a)) & 1) ? mat1 : mat2;
+        return true;
+    }
+    return false;
+}
+
+Vec3m Floor::normal(const Vec3m &point) {
+    return (y < 0) ? Vec3m(0,1,0) : Vec3m(0,-1,0);
 }
