@@ -8,7 +8,7 @@ public:
     Vec3m position;
     double intens;
 
-    Light(const Vec3m position, const double intens);
+    Light(const Vec3m position, const double intens) {this->position = position; this->intens = intens;}
 };
 
 #endif

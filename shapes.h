@@ -24,7 +24,7 @@ public:
 
 class Shape {
     public:
-        Material material;
+        virtual Material getMaterial(Vec3m &point) = 0;
         virtual bool intersect(const Vec3m &orig, const Vec3m &dir, double &d) = 0; //расстояние до ближайшего пересечения с лучём из точки О в направлении D
         virtual Vec3m normal(const Vec3m &point) = 0;
 };
@@ -33,8 +33,10 @@ class Sphere : public Shape
 {
 public:
     Vec3m center;
+    Material material;
     double r;
     Sphere(Vec3m center, double r, Material material);
+    Material getMaterial(Vec3m &point) {return material;}
     bool intersect(const Vec3m &orig, const Vec3m &dir, double &d);
     Vec3m normal(const Vec3m &point);
 };
@@ -46,7 +48,20 @@ public:
     Material mat1;
     Material mat2;
 	Floor(double y, Material mat1, Material mat2) {this->y = y; this->mat1 = mat1; this->mat2 = mat2;};
+    Material getMaterial(Vec3m &point);
 	bool intersect(const Vec3m &orig, const Vec3m &dir, double &d);
     Vec3m normal(const Vec3m &point);
+};
+
+class Plane : public Shape
+{
+public:
+    Vec3m normal_v;
+    double dest0;
+    Material material;
+    Plane(Vec3m normal_v, double dest0, Material material);
+    Material getMaterial(Vec3m &point) {return material;}  
+	bool intersect(const Vec3m &orig, const Vec3m &dir, double &d);
+    Vec3m normal(const Vec3m &point) {return normal_v;}
 };
 #endif

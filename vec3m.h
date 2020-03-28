@@ -12,6 +12,7 @@ public:
     double norm();
     double& operator[](const int i);
     const double& operator[](const int i) const;
+    bool operator==(const Vec3m &v);
 };
 
 
