@@ -16,7 +16,7 @@
 const uint32_t PICSIZE_X = 1024; //разрешение выходной картинки
 const uint32_t PICSIZE_Y = 1024;
 
-const Vec3m CAM(0, 0, 0);
+const Vec3m CAM(0., 0., 0.);
 const double DEST = 1; 
 
 int main(int argc, const char** argv) {
@@ -63,7 +63,7 @@ int main(int argc, const char** argv) {
     Material floor_black(Colour(0, 0, 0), 1000, 0);
     Sphere sph1(Vec3m(-6, 2, 16), 2, yellow);
     Sphere sph2(Vec3m(13, 0, 4), 2, black);
-    Sphere sph3(Vec3m(1, 6, 15), 3, red);
+    Sphere sph3(Vec3m(0, 4, 18), 3, red);
     Sphere sph4(Vec3m(1.5, 1, 7), 1, black_specular);
     Floor fl(-2, floor_white, floor_black);
     Light l1(Vec3m(-15, 10, -20), 0.5);

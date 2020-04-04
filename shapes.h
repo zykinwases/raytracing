@@ -25,7 +25,7 @@ public:
 class Shape {
     public:
         virtual Material getMaterial(Vec3m &point) = 0;
-        virtual bool intersect(const Vec3m &orig, const Vec3m &dir, double &d) = 0; //расстояние до ближайшего пересечения с лучём из точки О в направлении D
+        virtual bool intersect(const Vec3m &orig, const Vec3m &dir, double &d) = 0;
         virtual Vec3m normal(const Vec3m &point) = 0;
 };
 

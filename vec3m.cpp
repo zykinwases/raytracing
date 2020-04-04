@@ -24,7 +24,7 @@ double Vec3m::norm() {
 const double& Vec3m::operator[](const int i) const{ 
     if (i == 1) return x;
     if (i == 2) return y;
-    if (i == 3) return z;
+    else return z;
 }
 
 bool Vec3m::operator==(const Vec3m &v) {
@@ -34,7 +34,7 @@ bool Vec3m::operator==(const Vec3m &v) {
 double& Vec3m::operator[](const int i) { 
     if (i == 1) return x;
     if (i == 2) return y;
-    if (i == 3) return z;
+    else return z;
 }
 
 Vec3m operator+(Vec3m lhs, const Vec3m& rhs) {
@@ -52,7 +52,6 @@ Vec3m operator-(Vec3m lhs, const Vec3m& rhs) {
 }
 
 Vec3m operator*(Vec3m lhs, const double a) {
-    double ret = 0;
     for (int i = 1; i <= 3; i++) {
         lhs[i] *= a;
     }

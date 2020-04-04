@@ -39,7 +39,7 @@ bool Sphere::intersect(const Vec3m &orig, const Vec3m &dir, double &d) {
     if (c_dir > r*r) return false;
     double d_in_sph = std::sqrt(r*r - c_dir);
     d = L_dir - d_in_sph;
-    if (d < 1) d = L_dir + d_in_sph; //переделать 1 на что-то более общее (расстояние до экрана)
+    if (d < 1) d = L_dir + d_in_sph;
     if (d < 1) return false;
     return true;
 }
